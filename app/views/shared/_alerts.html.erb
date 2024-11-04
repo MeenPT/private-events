@@ -1,0 +1,18 @@
+<% if notice %>
+  <div class="alert alert-success alert-dismissible fade show text-center my-0" role="alert">
+    <div>
+      <i class="bi bi-check-circle me-2" role="presentation"></i>
+      <%= notice %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+<% if alert %>
+  <div class="alert alert-success alert-dismissible fade show text-center my-0" role="alert">
+    <div>
+      <i class="bi bi-exclamation-diamond me-2" role="presentation"></i>
+      <%= alert %>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

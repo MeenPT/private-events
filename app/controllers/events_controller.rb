@@ -12,6 +12,13 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = Event.new(event_params)
+
+    if @event.save
+      redirect_to root_path, notice: "Success! New event created."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
@@ -23,6 +30,11 @@ class EventsController < ApplicationController
 
 
   def destroy
-    
+  end
+
+  private
+
+  def event_params
+    params.require(:event).permit(:title, :date, :location, :extra_information)
   end
 end
