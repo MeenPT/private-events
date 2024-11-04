@@ -1,7 +1,24 @@
 <div class="mb-5">
   <%= render "shared/home_btn" %>
 </div>
-<h1><%= @event.title %></h1>
+<div class="hstack">
+  <h1><%= @event.title %></h1>
+  <div class="ms-auto">
+    <div class="dropdown">
+      <button class="btn btn-light btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-three-dots"></i>
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <%= link_to "Edit", edit_event_path(@event), class: "dropdown-item" %>
+        </li>
+        <li>
+          <%= button_to "Delete", @event, method: :delete, class: "dropdown-item" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 <hr>
 <section class="hstack gap-3 align-items-center">
   <div>

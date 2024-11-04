@@ -30,6 +30,13 @@ class EventsController < ApplicationController
 
 
   def destroy
+    @event = Event.find(params[:id])
+
+    if @event.destroy
+      redirect_to root_path, notice: "Event delete."
+    else
+      redirect_to @event, alert: "Failed to delete the event. Try again later.", status:
+    end
   end
 
   private
