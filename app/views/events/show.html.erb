@@ -1,0 +1,22 @@
+<div class="mb-5">
+  <%= render "shared/home_btn" %>
+</div>
+<h1><%= @event.title %></h1>
+<hr>
+<section class="hstack gap-3 align-items-center">
+  <div>
+    <i class="bi bi-calendar-check me-2"></i>
+    <time datetime="<%= @event.date %>"><%= @event.date.strftime("%d %b %Y")%></time>
+  </div>
+  <div class="vr"></div>
+  <div>
+    <i class="bi bi-geo-alt me-2"></i>
+    <address class="d-inline-block m-0"><%= @event.location %></address>
+  </div>
+</section>
+<% if !@event.extra_information.empty? %>
+  <section class="mt-5">
+    <h2>Information</h2>
+    <p><%= @event.extra_information %></p>
+  </section>
+<% end %>
