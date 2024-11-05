@@ -38,9 +38,23 @@
     <address class="d-inline-block m-0"><%= @event.location %></address>
   </div>
 </section>
+<% if user_signed_in? && !@is_creator  %>
+  <section class="mt-5">
+    <% if @event.attendees.find_by(id: current_user.id) %>
+    <% else %>
+      <%= form_with model: @event_attendance do |f| %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit "Attend the event", class: "btn btn-dark" %>
+      <% end %>
+    <% end %>
+  </section>
+<% end %>
 <% if !@event.extra_information.empty? %>
   <section class="mt-5">
     <h2>Information</h2>
     <p><%= @event.extra_information %></p>
   </section>
 <% end %>
+<section class="mt-5">
+  <%= render "attendees_list", attendees: @event.attendees %>
+</section>

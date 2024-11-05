@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @is_creator = @event.creator == current_user
+    @event_attendance = EventAttendance.new
   end
 
   def new
