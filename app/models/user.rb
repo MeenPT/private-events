@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  has_many :created_events, foreign_key: "creator_id", class_name: "Event"
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 end
