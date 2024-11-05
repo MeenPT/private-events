@@ -4,4 +4,6 @@ class Event < ApplicationRecord
   validates :location, presence: true
 
   belongs_to :creator, class_name: "User"
+  has_many :event_attendances
+  has_many :attendees, through: :event_attendances, source: :attendee
 end
