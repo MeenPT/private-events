@@ -1,0 +1,23 @@
+<article class="col">
+  <div class="card w-100" >
+    <div class="card-body">
+      <h3 class="truncate"><%= event.title %></h3>
+      <p class="card-subtitle mb-2 text-body-secondary">By <%= event.creator.full_name %></p>
+      <div class="text-body-secondary hstack gap-2 my-4">
+        <div>
+          <i class="bi bi-calendar-check me-2"></i>
+          <time class="fs-6" datetime="<%= event.date %>"><%= event.date.strftime("%d %b %Y")%></time>
+        </div>
+        <div class="vr"></div>
+        <div>
+          <i class="bi bi-geo-alt me-2"></i>
+          <address class="d-inline-block m-0"><%= event.location %></address>
+        </div>
+      </div>
+      <a href="<%= event_path(event) %>" class="btn btn-sm btn-light">
+        Details
+        <i class="bi bi-eye ms-2"></i>
+      </a>
+    </div>
+  </div>
+</article>
