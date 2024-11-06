@@ -40,7 +40,8 @@
 </section>
 <% if user_signed_in? && !@is_creator  %>
   <section class="mt-5">
-    <% if @event.attendees.find_by(id: current_user.id) %>
+    <% if @already_attendee %>
+      <%= button_to "Remove me from the attendents list", @event_attendance, method: :delete, params: { event_id: @event.id } ,class: "btn btn-outline-danger" %>
     <% else %>
       <%= form_with model: @event_attendance do |f| %>
         <%= f.hidden_field :event_id, value: @event.id %>

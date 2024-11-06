@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "events#index"
   resources :events
   resources :users, only: [ :show ]
-  resources :event_attendances, only: [ :create ]
+  resources :event_attendances, only: [ :create, :destroy ]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

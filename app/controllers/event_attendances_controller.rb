@@ -13,6 +13,20 @@ class EventAttendancesController < ApplicationController
     end
   end
 
+  def destroy
+    @attendance = EventAttendance.find(params[:id])
+
+    if @attendance.attendee != current_user
+      redirect_to root_path, alert: "You are not allowed to access this resource."
+    end
+
+    if @attendance.destroy
+      redirect_to event_path(params[:event_id]), notice: "Attendance canceled."
+    else
+      redirect_to root_path, alert: "Something went wrong."
+    end
+  end
+
   private
 
   def event_attendance_params
