@@ -1,7 +1,32 @@
-<section>
-  <h2>My Events</h2>
-  <p class="lead">The events you hosted in the past.</p>
-  <div class="mt-4">
+<div class="vstack gap-5">
+  <section>
+    <h2>My Events</h2>
+    <p class="lead">The events you hosted in the past.</p>
+    <div class="mt-4">
+      <table class="table table-bordered table-hover rounded-2">
+        <thead class="table-light" >
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Title</th>
+            <th scope="col">Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @created_events.each_with_index do |event, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= event.date.strftime("%d %b %Y")%></td>
+              <td><%= event.title %></td>
+              <td><%= event.location %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <section>
+    <h2>Upcoming Events</h2>
     <table class="table table-bordered table-hover rounded-2">
       <thead class="table-light" >
         <tr>
@@ -12,7 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @created_events.each_with_index do |event, index| %>
+        <% current_user.attended_events.where(date: Date.today...).each_with_index do |event, index| %>
           <tr>
             <th scope="row"><%= index + 1 %></th>
             <td><%= event.date.strftime("%d %b %Y")%></td>
@@ -22,5 +47,29 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-</section>
+  </section>
+  <section>
+    <h2>Past Events</h2>
+    <p class="lead">The events you had attended in the past.</p>
+    <table class="table table-bordered table-hover rounded-2">
+      <thead class="table-light" >
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_user.attended_events.where(date: ...Date.today).each_with_index do |event, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= event.date.strftime("%d %b %Y")%></td>
+            <td><%= event.title %></td>
+            <td><%= event.location %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>
