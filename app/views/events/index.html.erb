@@ -1,8 +1,21 @@
 <h1>All Events</h1>
-<section class="mt-5 row row-cols-1 row-cols-md-3 row-cols-sm-2 g-3" >
-  <% if @events.empty? %>
-    <%= render "empty" %>
-  <% else %>
-    <%= render @events %>
-  <% end %>
+<section class="mt-5"  >
+  <h2 class="mb-4">Upcoming Events</h2>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-3">
+    <% if @upcoming_events.empty? %>
+      <%= render "empty" %>
+    <% else %>
+      <%= render @upcoming_events %>
+    <% end %>
+  </div>
+</section>
+<section class="mt-5"  >
+  <h2 class="mb-4">Past Events</h2>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-3">
+    <% if @past_events.empty? %>
+      <%= render "empty" %>
+    <% else %>
+      <%= render @past_events %>
+    <% end %>
+  </div>
 </section>
