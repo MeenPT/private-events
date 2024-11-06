@@ -2,9 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
-    # @events = Event.all.includes(:creator)
-    @upcoming_events = Event.upcoming.includes(:creator)
-    @past_events = Event.past.includes(:creator)
+    @upcoming_events = Event.upcoming
+    @past_events = Event.past
   end
 
   def show
